@@ -122,10 +122,10 @@ GROUP BY customer_group;
 
 An interactive dashboard built to communicate insights visually to stakeholders, featuring:
 
-- **KPI cards** — Total customers (3.9K), Average Purchase Amount ($59.76), Average Review Rating (3.75)
-- **Donut chart** — Subscription status breakdown (27% Yes / 73% No)
-- **Bar charts** — Revenue and sales volume by category and age group
-- **Slicers** — Filter by Subscription Status, Gender, Category, Shipping Type
+- **KPI cards**: Total customers (3.9K), Average Purchase Amount ($59.76), Average Review Rating (3.75)
+- **Donut chart**: Subscription status breakdown (27% Yes / 73% No)
+- **Bar charts**: Revenue and sales volume by category and age group
+- **Slicers**: Filter by Subscription Status, Gender, Category, Shipping Type
 
 ---
 
