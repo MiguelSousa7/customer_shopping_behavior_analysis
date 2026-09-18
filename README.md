@@ -18,6 +18,23 @@ The pipeline covers three distinct layers, replicating the typical responsibilit
 
 ---
 
+## 📊 Dataset
+
+| Attribute | Details |
+|---|---|
+| Source | Customer shopping behavior dataset (CSV) |
+| Rows | 3,900 transactions |
+| Columns | 18 features |
+| Features | Demographics, purchase details, shopping behavior |
+| Missing data | 37 null values in `review_rating` (imputed) |
+
+**Feature categories:**
+- **Demographics** — Age, Gender, Location, Subscription Status
+- **Purchase details** — Item, Category, Amount (USD), Season, Size, Color
+- **Behavior** — Discount Applied, Previous Purchases, Frequency, Review Rating, Shipping Type
+
+---
+
 ## 🔧 Data Pipeline
 
 ### 1 · ETL & Exploratory Data Analysis - Python
@@ -83,6 +100,22 @@ df.to_sql("customer", engine, if_exists="replace", index=False)
 | Q9 | Customer segmentation: New / Returning / Loyal |
 | Q10 | Top 3 most purchased products per category (window function) |
 
+**Example - CTE + CASE for segmentation (Q9):**
+```sql
+WITH customer_type AS (
+    SELECT customer_id, previous_purchases,
+           CASE
+               WHEN previous_purchases = 1 THEN 'New'
+               WHEN previous_purchases BETWEEN 2 AND 10 THEN 'Returning'
+               ELSE 'Loyal'
+           END AS customer_group
+    FROM customer
+)
+SELECT customer_group, COUNT(*) AS num_customers
+FROM customer_type
+GROUP BY customer_group;
+```
+
 **Example - Window function (Q10):**
 ```sql
 WITH item_counts AS (
@@ -98,22 +131,6 @@ WITH item_counts AS (
 SELECT item_rank, category, item_purchased, total_orders
 FROM item_counts
 WHERE item_rank <= 3;
-```
-
-**Example — CTE + CASE for segmentation (Q9):**
-```sql
-WITH customer_type AS (
-    SELECT customer_id, previous_purchases,
-           CASE
-               WHEN previous_purchases = 1 THEN 'New'
-               WHEN previous_purchases BETWEEN 2 AND 10 THEN 'Returning'
-               ELSE 'Loyal'
-           END AS customer_group
-    FROM customer
-)
-SELECT customer_group, COUNT(*) AS num_customers
-FROM customer_type
-GROUP BY customer_group;
 ```
 
 ---
