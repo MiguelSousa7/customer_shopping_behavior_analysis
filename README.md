@@ -29,9 +29,9 @@ The pipeline covers three distinct layers, replicating the typical responsibilit
 | Missing data | 37 null values in `review_rating` (imputed) |
 
 **Feature categories:**
-- **Demographics** — Age, Gender, Location, Subscription Status
-- **Purchase details** — Item, Category, Amount (USD), Season, Size, Color
-- **Behavior** — Discount Applied, Previous Purchases, Frequency, Review Rating, Shipping Type
+- **Demographics**: Age, Gender, Location, Subscription Status
+- **Purchase details**: Item, Category, Amount (USD), Season, Size, Color
+- **Behavior**: Discount Applied, Previous Purchases, Frequency, Review Rating, Shipping Type
 
 ---
 
