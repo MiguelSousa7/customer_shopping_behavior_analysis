@@ -1,6 +1,6 @@
 # 🛍️ Customer Shopping Behavior Analysis
 
-> An end-to-end data analytics project simulating a corporate BI workflow — from raw data ingestion to interactive dashboarding — using Python, SQL and Power BI.
+> An end-to-end data analytics project simulating a corporate BI workflow, from raw data ingestion to interactive dashboarding, using Python, SQL and Power BI.
 
 ---
 
@@ -15,42 +15,6 @@ The pipeline covers three distinct layers, replicating the typical responsibilit
 | 🐍 ETL & EDA | Python · pandas | Data cleaning, transformation and feature engineering |
 | 🗄️ Business Analysis | PostgreSQL | 10 structured queries to answer key business questions |
 | 📊 Visualization | Power BI | Interactive dashboard with KPIs and dynamic filters |
-
----
-
-## 📂 Repository Structure
-
-```
-customer-shopping-behavior/
-├── data/
-│   ├── raw/                          # Original CSV dataset
-│   └── clean/                        # Cleaned dataset (notebook output)
-├── notebooks/
-│   └── initial_eta_eda.ipynb         # ETL + EDA pipeline
-├── sql/
-│   └── customer_behavior.sql         # 10 business analysis queries
-├── powerbi/
-│   └── customer_dashboard.pbix       # Interactive Power BI dashboard
-└── report/
-    └── Customer_Shopping_Behavior_Analysis.docx
-```
-
----
-
-## 📊 Dataset
-
-| Attribute | Details |
-|---|---|
-| Source | Customer shopping behavior dataset (CSV) |
-| Rows | 3,900 transactions |
-| Columns | 18 features |
-| Features | Demographics, purchase details, shopping behavior |
-| Missing data | 37 null values in `review_rating` (imputed) |
-
-**Feature categories:**
-- **Demographics** — Age, Gender, Location, Subscription Status
-- **Purchase details** — Item, Category, Amount (USD), Season, Size, Color
-- **Behavior** — Discount Applied, Previous Purchases, Frequency, Review Rating, Shipping Type
 
 ---
 
@@ -102,7 +66,7 @@ df.to_sql("customer", engine, if_exists="replace", index=False)
 
 ---
 
-### 2 · Business Analysis — SQL (PostgreSQL)
+### 2 · Business Analysis - SQL (PostgreSQL)
 
 10 queries structured around real business questions:
 
@@ -119,7 +83,7 @@ df.to_sql("customer", engine, if_exists="replace", index=False)
 | Q9 | Customer segmentation: New / Returning / Loyal |
 | Q10 | Top 3 most purchased products per category (window function) |
 
-**Example — Window function (Q10):**
+**Example - Window function (Q10):**
 ```sql
 WITH item_counts AS (
     SELECT category, item_purchased,
@@ -154,7 +118,7 @@ GROUP BY customer_group;
 
 ---
 
-### 3 · Dashboard — Power BI
+### 3 · Dashboard - Power BI
 
 An interactive dashboard built to communicate insights visually to stakeholders, featuring:
 
@@ -182,35 +146,11 @@ An interactive dashboard built to communicate insights visually to stakeholders,
 
 ## 💡 Business Recommendations
 
-1. **Boost subscriptions** — With 73% non-subscribers, targeted campaigns with exclusive perks could drive significant conversion.
-2. **Loyalty programs** — Incentivize "Returning" customers to cross into the "Loyal" segment, which already represents 80% of the base.
-3. **Review discount policy** — Products like Hat, Sneakers, and Coat show ~50% discount rates; assess whether margins justify this dependency.
-4. **Product positioning** — Highlight top-rated products (Gloves, Sandals, Boots) in marketing campaigns to leverage social proof.
-5. **Targeted marketing** — Focus acquisition spend on Young Adults and Express Shipping users, both associated with higher revenue.
-
----
-
-## 🛠️ Tech Stack
-
-| Tool | Purpose |
-|---|---|
-| Python 3.x | Core language for ETL and EDA |
-| pandas | Data manipulation and transformation |
-| SQLAlchemy + psycopg2 | Python → PostgreSQL integration |
-| PostgreSQL | Relational database for SQL analysis |
-| Power BI Desktop | Interactive dashboard and reporting |
-| Jupyter Notebook | Development environment and code documentation |
-
----
-
-## 🧠 Skills Demonstrated
-
-- **Data wrangling** — cleaning, normalization, and missing value imputation with pandas
-- **Feature engineering** — derived variables to enrich analysis (`age_group`, `purchase_frequency_days`)
-- **Advanced SQL** — CTEs, window functions (`ROW_NUMBER`), subqueries, conditional aggregations
-- **System integration** — end-to-end pipeline from Python to PostgreSQL via SQLAlchemy
-- **Business intelligence** — translating SQL results into actionable business insights
-- **Data storytelling** — Power BI dashboard with KPIs, dynamic filters, and visual narrative
+1. **Boost subscriptions** - With 73% non-subscribers, targeted campaigns with exclusive perks could drive significant conversion.
+2. **Loyalty programs** - Incentivize "Returning" customers to cross into the "Loyal" segment, which already represents 80% of the base.
+3. **Review discount policy** - Products like Hat, Sneakers, and Coat show ~50% discount rates; assess whether margins justify this dependency.
+4. **Product positioning** - Highlight top-rated products (Gloves, Sandals, Boots) in marketing campaigns to leverage social proof.
+5. **Targeted marketing** - Focus acquisition spend on Young Adults and Express Shipping users, both associated with higher revenue.
 
 ---
 
