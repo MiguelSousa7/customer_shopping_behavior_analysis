@@ -20,7 +20,7 @@ The pipeline covers three distinct layers, replicating the typical responsibilit
 
 ## 🔧 Data Pipeline
 
-### 1 · ETL & Exploratory Data Analysis — Python
+### 1 · ETL & Exploratory Data Analysis - Python
 
 The notebook `initial_eta_eda.ipynb` implements the following steps:
 
